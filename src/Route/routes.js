@@ -5,6 +5,7 @@ import Main from "../components/Dashboard/Main.js";
 import Farming from "../components/Dashboard/More/Farming.js";
 import Planners from "../components/Dashboard/More/Planners.js";
 import Travellers from "../components/Dashboard/More/Travellers.js";
+import Post from "../components/Memories/Post.js";
 
 export const HOME = "/";
 export const SIGNUP = "/signup";
@@ -16,6 +17,7 @@ const router = createBrowserRouter([
   { path: "/main/farming", element: <Farming /> },
   { path: "/main/planners", element: <Planners /> },
   { path: "/main/travellers", element: <Travellers /> },
+  { path: "/main/memories", element: <Post />}
 ]);
 
 export default router;

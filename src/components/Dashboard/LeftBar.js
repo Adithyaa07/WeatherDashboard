@@ -1,8 +1,8 @@
-
 import React from "react";
 import Top5CitiesWeather from "./Top5CitiesWeather";
 import Button, { WeatherDataLabel } from "../Reusables/Button";
 import { convertTemperature } from "../Reusables/Weather";
+import { Link } from "react-router-dom";
 
 const LeftBar = (props) => {
   const {
@@ -20,25 +20,46 @@ const LeftBar = (props) => {
   } = props;
 
   return (
-    <div className={`weather_container_left_panel ${isDarkMode ? "dark_mode" : "light_mode"}`}>
+    <div
+      className={`weather_container_left_panel ${
+        isDarkMode ? "dark_mode" : "light_mode"
+      }`}
+    >
       <div className="weather_container_top_section d-block">
         <div className="weather_title_div">
           {/* <h1 style={{ fontWeight: 900, color: isDarkMode ? "#ddd" : "#222" }}>Weather Dashboard</h1> */}
+
+          <Link to="/main/memories">
+            <Button
+              classNames={`dark_mode_button ${
+                isDarkMode ? "light_mode_button" : "dark_mode_button"
+              }`}
+              onClick={() => setIsDarkMode(!isDarkMode)}
+              buttonInnerText="Memories"
+              style={{ marginRight: "10px", radius: "20px" }}
+            />
+          </Link>
           <Button
-            classNames={`dark_mode_button ${isDarkMode ? "light_mode_button" : "dark_mode_button"}`}
+            classNames={`dark_mode_button ${
+              isDarkMode ? "light_mode_button" : "dark_mode_button"
+            }`}
             onClick={() => setIsDarkMode(!isDarkMode)}
             buttonInnerText={isDarkMode ? "Light Mode" : "Dark Mode"}
           />
         </div>
         <div className="weather_props_units_button_div">
           <Button
-            classNames={`metrics_unit_button ${isMetricActive ? "inactive_button" : ""}`}
+            classNames={`metrics_unit_button ${
+              isMetricActive ? "inactive_button" : ""
+            }`}
             onClick={() => handleUnitChange("C")}
             buttonInnerText="Metric"
-            style={{ marginRight: "10px" , radius: "20px" }}
+            style={{ marginRight: "10px", radius: "20px" }}
           />
           <Button
-            classNames={`imperial_unit_button ${isMetricActive ? "" : "inactive_button"}`}
+            classNames={`imperial_unit_button ${
+              isMetricActive ? "" : "inactive_button"
+            }`}
             onClick={() => handleUnitChange("F")}
             buttonInnerText="Imperial"
           />
@@ -47,7 +68,13 @@ const LeftBar = (props) => {
       <div className="weather_container_time_and_input_div my-2">
         <WeatherDataLabel
           dataTitle="data-time-stamp"
-          style={{ fontWeight: 900, display: "block", color: isDarkMode ? "#ddd" : "#222", fontSize: "2rem", fontStyle: "italic" }}
+          style={{
+            fontWeight: 900,
+            display: "block",
+            color: isDarkMode ? "#ddd" : "#222",
+            fontSize: "2rem",
+            fontStyle: "italic",
+          }}
           buttonInnerText={currentTime}
         />
         <input
@@ -74,10 +101,18 @@ const LeftBar = (props) => {
           randomCity.list &&
           randomCity.list[0] && (
             <>
-            <p style={{ fontWeight: "bold", fontSize: "2rem", color: "black" }}>Here is your weather data</p>
+              <p
+                style={{ fontWeight: "bold", fontSize: "2rem", color: "black" }}
+              >
+                Here is your weather data
+              </p>
               <WeatherDataLabel
                 dataTitle="data-city"
-                style={{ fontSize: "1.75rem", fontWeight: 900, color: isDarkMode ? "#ddd" : "#222" }}
+                style={{
+                  fontSize: "1.75rem",
+                  fontWeight: 900,
+                  color: isDarkMode ? "#ddd" : "#222",
+                }}
                 buttonInnerText={randomCity.city.name}
               />
               <WeatherDataLabel
@@ -95,7 +130,11 @@ const LeftBar = (props) => {
             <WeatherDataLabel
               dataTitle="data-current-temperature"
               classNames="label"
-              style={{ fontSize: "3rem", fontWeight: 900, color: isDarkMode ? "#ddd" : "#222" }}
+              style={{
+                fontSize: "3rem",
+                fontWeight: 900,
+                color: isDarkMode ? "#ddd" : "#222",
+              }}
               buttonInnerText={
                 units === "C"
                   ? `${randomCity.list[0].main.temp} °C`
